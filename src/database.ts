@@ -15,4 +15,5 @@ export const sequelize = new Sequelize({
       ca: fs.readFileSync(__dirname + "/../ca.pem").toString(),
     },
   },
+  logging: false,
 });

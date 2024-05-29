@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import Contact from "../models/contact";
-import { Op } from "sequelize/types/operators";
+import { Op } from "sequelize";
 
 const Identify = async (req: Request, res: Response) => {
   try {
