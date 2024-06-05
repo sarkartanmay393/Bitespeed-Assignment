@@ -16,7 +16,7 @@ const Identify = async (req: Request, res: Response) => {
     let primaryContact: Contact | null = null;
     const matchedContacts = await Contact.findAll({
       where: {
-        [Op.or]: [{ email }, { phoneNumber }],
+        [Op.or]: [{ email }, { phoneNumber: phoneNumber + "" }],
       },
       order: [["createdAt", "ASC"]],
     });
@@ -32,7 +32,7 @@ const Identify = async (req: Request, res: Response) => {
     if (!primaryContact) {
       const newPrimaryContact = await Contact.create({
         email,
-        phoneNumber,
+        phoneNumber: phoneNumber + "",
         linkPrecedence: "primary",
       });
       return res.status(200).json({
@@ -67,16 +67,16 @@ const Identify = async (req: Request, res: Response) => {
       });
       const numberMatchedRecords = await Contact.count({
         where: {
-          phoneNumber,
+          phoneNumber: phoneNumber + "",
         },
       });
 
       if (!(emailMatchedRecords && numberMatchedRecords)) {
         const [contact] = await Contact.findOrCreate({
-          where: { email, phoneNumber },
+          where: { email, phoneNumber: phoneNumber + "" },
           defaults: {
             email,
-            phoneNumber,
+            phoneNumber: phoneNumber + "",
             linkPrecedence: "secondary",
             linkedId: primaryContact?.id,
           },
