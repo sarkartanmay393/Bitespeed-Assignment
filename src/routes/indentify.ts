@@ -4,9 +4,8 @@ import { Op } from "sequelize";
 
 const Identify = async (req: Request, res: Response) => {
   try {
-    const { email } = req.body;
-    let { phoneNumber } = req.body;
-    phoneNumber = String(phoneNumber);
+    const email = String(req.body?.email);
+    const phoneNumber = String(req.body?.phoneNumber);
 
     if (!email && !phoneNumber) {
       return res
