@@ -4,6 +4,8 @@
 
 FluxKart.com, committed to offering personalized customer experiences, has integrated Bitespeed into their platform. Bitespeed needs to identify and track customer identities across multiple purchases made with varying contact information. This project aims to address the challenge of linking different orders made with different contact details to the same customer.
 
+### Demo: [Watch the video](https://vimeo.com/953969226?share=copy)
+
 ### Requirements
 
 Design a web service with an endpoint `/identify` to receive HTTP POST requests with a JSON body:
@@ -11,7 +13,7 @@ Design a web service with an endpoint `/identify` to receive HTTP POST requests 
 ```json
 {
   "email": string,
-  "phoneNumber": number
+  "phoneNumber": string
 }
 ```
 
