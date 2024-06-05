@@ -10,8 +10,8 @@ Design a web service with an endpoint `/identify` to receive HTTP POST requests 
 
 ```json
 {
-  "email"?: string,
-  "phoneNumber"?: number
+  "email": string,
+  "phoneNumber": number
 }
 ```
 
